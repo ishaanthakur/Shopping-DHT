@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_package = "com.cloud.grpc";
+
+service DHT{
+  rpc get(getRequest) returns (getResponse);
+  rpc put(putRequest) returns (putResponse);
+}
+
+message getRequest{
+  int64 Key = 1;
+}
+message getResponse{
+  bytes Val = 1;
+  int32 version = 2;
+}
+
+message putRequest{
+  int64 Key = 1;
+  bytes Val = 2;
+  int32 version = 3;
+}
+
+message putResponse{
+  int32 Success = 1;
+}
